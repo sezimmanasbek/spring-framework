@@ -15,34 +15,35 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td th:text="${mentor.get(0).firstName}"></td>
-        <td th:text="${mentor.get(0).lastName}"></td>
-        <td th:text="${mentor.get(0).age}"></td>
-        <td th:text="${mentor.get(0).gender}"></td>
+    <tr th:each="teacher: ${mentor}">
+        <td th:text="${teacher.firstName}"></td>
+        <td th:text="${teacher.lastName}"></td>
+        <td th:text="${teacher.age}"></td>
+        <td th:text="${teacher.gender}"></td>
 
     </tr>
-    <tr>
-        <td th:text="${mentor.get(1).firstName}"></td>
-        <td th:text="${mentor.get(1).lastName}"></td>
-        <td th:text="${mentor.get(1).age}"></td>
-        <td th:text="${mentor.get(1).gender}"></td>
+<!--    <tr>-->
+<!--        <td th:text="${mentor.get(1).firstName}"></td>-->
+<!--        <td th:text="${mentor.get(1).lastName}"></td>-->
+<!--        <td th:text="${mentor.get(1).age}"></td>-->
+<!--        <td th:text="${mentor.get(1).gender}"></td>-->
 
-    </tr>
-    <tr>
-        <td th:text="${mentor.get(2).firstName}"></td>
-        <td th:text="${mentor.get(2).lastName}"></td>
-        <td th:text="${mentor.get(2).age}"></td>
-        <td th:text="${mentor.get(2).gender}"></td>
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td th:text="${mentor.get(2).firstName}"></td>-->
+<!--        <td th:text="${mentor.get(2).lastName}"></td>-->
+<!--        <td th:text="${mentor.get(2).age}"></td>-->
+<!--        <td th:text="${mentor.get(2).gender}"></td>-->
 
-    </tr>
-    <tr>
-        <td th:text="${mentor.get(3).firstName}"></td>
-        <td th:text="${mentor.get(3).lastName}"></td>
-        <td th:text="${mentor.get(3).age}"></td>
-        <td th:text="${mentor.get(3).gender}"></td>
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td th:text="${mentor.get(3).firstName}"></td>-->
+<!--        <td th:text="${mentor.get(3).lastName}"></td>-->
+<!--        <td th:text="${mentor.get(3).age}"></td>-->
+<!--        <td th:text="${mentor.get(3).gender}"></td>-->
 
-    </tr>
+<!--    </tr>-->
+
     </tbody>
 </table>
 </body>
