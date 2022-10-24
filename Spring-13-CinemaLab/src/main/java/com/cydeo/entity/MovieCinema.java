@@ -16,9 +16,9 @@ public class MovieCinema extends BaseEntity{
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime dateTime;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cinema cinema;
 
     public MovieCinema(LocalDateTime dateTime) {

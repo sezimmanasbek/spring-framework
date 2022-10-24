@@ -26,6 +26,7 @@ public class Movie extends BaseEntity{
     private LocalDate releaseDate;
 
     private int duration;
+    @Column(columnDefinition = "text")
     private String summary;
 
     @ManyToMany

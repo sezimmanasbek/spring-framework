@@ -3,10 +3,7 @@ package com.cydeo.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,10 +16,10 @@ public class Ticket extends BaseEntity {
     private int seatNumber;
     private int rowNumber;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private MovieCinema movieCinema;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private UserAccount userAccount;
 
     public Ticket(LocalDateTime dateTime, int seatNumber, int rowNumber) {

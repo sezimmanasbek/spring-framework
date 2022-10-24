@@ -13,7 +13,7 @@ public class Genre extends BaseEntity{
 
     private String name;
 
-   @ManyToMany
+   @ManyToMany(mappedBy = "genre")
     private List<Movie> movie;
 
     public Genre(String name) {

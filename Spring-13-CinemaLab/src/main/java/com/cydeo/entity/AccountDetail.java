@@ -5,10 +5,7 @@ import com.cydeo.enums.State;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "accountDetails")
@@ -26,6 +23,9 @@ public class AccountDetail extends BaseEntity{
     private String postalCode;
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private UserAccount userAccount;
 
     public AccountDetail(String name, String address, String country, String city, State state, int age, String postalCode, Role role) {
         this.name = name;
