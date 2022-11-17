@@ -52,7 +52,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     //Write a native query to return all movies where duration exists in the range of duration
     @Query(value = "SELECT * FROM movie WHERE duration IN :duration ",nativeQuery = true)
-    List<Movie> findMovieByDurationIn(@Param("durations") List<Integer> duration);
+    List<Movie> findMovieByDurationIn(@Param("duration") List<Integer> duration);
 
     //Write a native query to list the top 5 most expensive movies
     @Query(value = "SELECT * FROM movie ORDER BY price DESC LIMIT 5",nativeQuery = true)

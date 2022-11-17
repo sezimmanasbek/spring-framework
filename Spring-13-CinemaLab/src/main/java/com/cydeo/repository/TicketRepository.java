@@ -23,7 +23,7 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
 
 
     //Write a derived query to list all tickets between a range of dates
-    List<Ticket> findByDateTimeBetween(LocalDateTime dateTime);
+    List<Ticket> findByDateTimeBetween(LocalDateTime dateTime, LocalDateTime dateTime1);
 
     // ------------------- JPQL QUERIES ------------------- //
 
@@ -39,12 +39,12 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query to count the number of tickets a user bought
-    @Query(value = "SELECT count(*) FROM ticket  WHERE userAccount_id = :userId",nativeQuery = true)
+    @Query(value = "SELECT count(t) FROM Ticket t  WHERE t.userAccount.id = ?1",nativeQuery = true)
     Integer countTicketByUser(@Param("userId")Long userId);
 
 
     //Write a native query to count the number of tickets a user bought in a specific range of dates
-    @Query(value = "SELECT count(*) FROM ticket WHERE userAccount_id = :id AND dateTime BETWEEN :date1 AND :date2",nativeQuery = true)
+    @Query(value = "SELECT count(*) FROM ticket WHERE user_account_id = :userId AND date_time BETWEEN :date1 AND :date2",nativeQuery = true)
     Integer countTicketByUserSpecificDate(@Param("userId") Long id,@Param("date1") LocalDateTime date1,@Param("date2") LocalDateTime date2);
 
 
