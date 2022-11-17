@@ -3,15 +3,18 @@ package com.cydeo.entity;
 import com.cydeo.enums.Role;
 import com.cydeo.enums.State;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "accountDetails")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-public class AccountDetail extends BaseEntity{
+public class Account extends BaseEntity{
 
     private String name;
     private String address;
@@ -25,9 +28,9 @@ public class AccountDetail extends BaseEntity{
     private Role role;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private UserAccount userAccount;
+    private User userAccount;
 
-    public AccountDetail(String name, String address, String country, String city, State state, int age, String postalCode, Role role) {
+    public Account(String name, String address, String country, String city, State state, int age, String postalCode, Role role) {
         this.name = name;
         this.address = address;
         this.country = country;

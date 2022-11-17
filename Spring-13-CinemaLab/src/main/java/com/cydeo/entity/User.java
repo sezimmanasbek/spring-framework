@@ -2,7 +2,9 @@ package com.cydeo.entity;
 
 import com.sun.istack.NotNull;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,21 +12,22 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-public class UserAccount extends BaseEntity {
+@Table(name = "user_account")
+public class User extends BaseEntity {
 
     @NotNull
     private String email;
     @NotNull
-//    @Size(min=6)
     private String password;
     private String username;
 
     @OneToOne(fetch = FetchType.LAZY)
-    private AccountDetail accountDetails;
+    private Account accountDetails;
 
-    public UserAccount(String email, String password, String username) {
+    public User(String email, String password, String username) {
         this.email = email;
         this.password = password;
         this.username = username;

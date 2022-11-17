@@ -20,4 +20,5 @@ public class Spring13CinemaLabApplication {
 		return Flyway.configure().baselineOnMigrate(true).dataSource(dataSource).load().migrate();
 	}
 
+
 }
