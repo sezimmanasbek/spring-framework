@@ -99,6 +99,6 @@ public interface EmployeeRepository extends JpaRepository<Employee,Long> {
     @Query(value ="UPDATE employees  SET email = 'admin@email.com' WHERE id=:id",nativeQuery = true)
     void updateEmployeeNative(@Param("id")Long id);
 
-    List<Employee> retrieveDepartmentByDivision(String division);
+//    List<Employee> retrieveDepartmentByDivision(String division);
 
 }

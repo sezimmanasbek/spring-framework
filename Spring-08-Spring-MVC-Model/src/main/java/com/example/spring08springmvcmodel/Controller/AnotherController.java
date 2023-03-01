@@ -27,6 +27,6 @@ public class AnotherController {
         model.addAttribute("mentor",mentors);
 
 
-        return "student/mentor";
+        return "mentor/mentor";
     }
 }

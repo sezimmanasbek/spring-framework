@@ -14,35 +14,28 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
-public class Movie extends BaseEntity{
+@Data
+public class Movie extends  BaseEntity{
 
     private String name;
-    private BigDecimal price;
+    @Column(columnDefinition = "DATE")
+    private LocalDate releaseDate;
+    private Integer duration;
+    @Column(columnDefinition = "text")
+    private String summary;
     @Enumerated(EnumType.STRING)
     private Type type;
     @Enumerated(EnumType.STRING)
     private State state;
-    @Column(columnDefinition = "DATE")
-    private LocalDate releaseDate;
+    private BigDecimal price;
 
-    private int duration;
-    @Column(columnDefinition = "text")
-    private String summary;
 
     @ManyToMany
-    @JoinTable(name = "movieGenreRel")
-    private List<Genre> genre;
+    @JoinTable(name = "movie_genre_rel",
+            joinColumns = @JoinColumn(name="movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genreList;
 
-    public Movie(String name, BigDecimal price, Type type, State state, LocalDate releaseDate, int duration, String summary) {
-        this.name = name;
-        this.price = price;
-        this.type = type;
-        this.state = state;
-        this.releaseDate = releaseDate;
-        this.duration = duration;
-        this.summary = summary;
-    }
+
 }

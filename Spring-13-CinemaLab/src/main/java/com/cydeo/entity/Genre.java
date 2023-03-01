@@ -9,17 +9,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-public class Genre extends BaseEntity{
+public class Genre extends BaseEntity {
 
     private String name;
 
-   @ManyToMany(mappedBy = "genre")
-    private List<Movie> movie;
+    @ManyToMany(mappedBy = "genreList")
+    private List<Movie> movieList;
 
-    public Genre(String name) {
-        this.name = name;
-    }
 }

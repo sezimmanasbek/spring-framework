@@ -6,10 +6,12 @@ import com.cydeo.repository.EmployeeRepository;
 import com.cydeo.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
 @Component
+@Transactional
 public class DataGenerator implements CommandLineRunner {
     RegionRepository regionRepository;
     DepartmentRepository departmentRepository;

@@ -10,34 +10,38 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "accountDetails")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Account extends BaseEntity{
+@Table(name = "account_details ")
+public class Account extends BaseEntity {
 
     private String name;
     private String address;
     private String country;
+    private String state;
     private String city;
-    @Enumerated(EnumType.STRING)
-    private State state;
-    private int age;
+    private Integer age;
     private String postalCode;
+
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private User userAccount;
+    @OneToOne(mappedBy = "account")
+    private User user;
 
-    public Account(String name, String address, String country, String city, State state, int age, String postalCode, Role role) {
-        this.name = name;
-        this.address = address;
-        this.country = country;
-        this.city = city;
-        this.state = state;
-        this.age = age;
-        this.postalCode = postalCode;
-        this.role = role;
+    @Override
+    public String toString() {
+        return "Account{" +
+                "name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", age=" + age +
+                ", postalCode='" + postalCode + '\'' +
+                ", role=" + role +
+                ", user=" + user +
+                '}';
     }
 }

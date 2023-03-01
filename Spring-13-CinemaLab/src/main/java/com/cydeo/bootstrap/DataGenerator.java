@@ -26,7 +26,7 @@ public class DataGenerator implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println(accountRepository.getAllAdminAccounts());
         System.out.println(ticketRepository.countTicketByUser(3L));
-        System.out.println(userRepository.findAllByAccountDetailsAgeGreaterThan(46));
+        System.out.println(userRepository.findAllByAccountAgeGreaterThan(46));
 
 
 

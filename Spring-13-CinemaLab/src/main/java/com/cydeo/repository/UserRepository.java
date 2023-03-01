@@ -19,13 +19,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findUserByUsername(String username);
 
     //Write a derived query to list all users that contain a specific name?
-    List<User> findAllByAccountDetailsNameContaining(String prefix);
+    List<User> findAllByAccountContaining(String prefix);
 
     //Write a derived query to list all users that contain a specific name in the ignore case mode?
-    List<User> findAllByAccountDetailsNameContainingIgnoreCase(String name);
+//    List<User> findAllByAccountDetailsNameContainingIgnoreCase(String name);
+    List<User> findAllByAccountNameContainingIgnoreCase(String name);
 
     //Write a derived query to list all users with an age greater than a specified age?
-    List<User> findAllByAccountDetailsAgeGreaterThan(int age);
+    List<User> findAllByAccountAgeGreaterThan(int age);
 
 
     // ------------------- JPQL QUERIES ------------------- //
@@ -45,19 +46,19 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // ------------------- Native QUERIES ------------------- //
 
     //Write a native query that returns all users that contain a specific name?
-    @Query(value = "SELECT * FROM user u JOIN account_details ad ON u.account_details.id = ad.id WHERE ad.name LIKE concat('%?prefix%')", nativeQuery = true)
+    @Query(value = "SELECT * FROM user_account u JOIN account_details ad ON u.account.id = ad.id WHERE ad.name LIKE concat('%?prefix%')", nativeQuery = true)
     List<User> getAllUserByNameContaining(@Param("prefix") String prefix);
 
     //Write a native query that returns all users?
-    @Query(value = "SELECT * FROM user", nativeQuery = true)
+    @Query(value = "SELECT * FROM user_account", nativeQuery = true)
     List<User> getAllUsers();
 
     //Write a native query that returns all users in the range of ages?
-    @Query(value = "SELECT * FROM user u JOIN account_details ad ON u.account_details_id ad.id WHERE ad.age IN ?age", nativeQuery = true)
+    @Query(value = "SELECT * FROM user_account u JOIN account_details ad ON u.account.id = ad.id WHERE ad.age IN ?age", nativeQuery = true)
     List<User> getUserAgeBetween(@Param("age") List<Integer> age);
 
     //Write a native query to read a user by email?
-    @Query(value = "SELECT * FROM user WHERE email = ?email", nativeQuery = true)
+    @Query(value = "SELECT * FROM user_account WHERE email = ?email", nativeQuery = true)
     List<User> findUsersByEmail(@Param("email") String email);
 
 }
